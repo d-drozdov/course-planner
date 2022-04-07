@@ -1,28 +1,9 @@
 import React, { Component } from "react";
-
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Add from "@material-ui/icons/Add";
-
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
-import ExpandMore from "@material-ui/icons/ExpandMore";
 import Fab from "@material-ui/core/Fab";
-import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-
-import Typography from "@material-ui/core/Typography";
-
-
 import Header from "./Components/Header.js";
-import ClassCard from "./Components/ClassCard.js";
+import CategoryCard from "./Components/CategoryCard.js";
 
 const styles = {
   fab: {
@@ -73,9 +54,9 @@ class App extends Component{
     super(props);
     this.state = {
       cardMap : {
-        taken: [],
-        wanted: [],
-        current: []
+        taken: [{title : "Data Sturctures", number: "601.226", term: "Fall 2019", status: "taken"}],
+        interested: [{title : "Object-Oriented Software Engineering", number: "601.421", term: "Spring 2021", status: "interested"}],
+        enrolled: [{title : "Full Stack JS", number: "601.280", term: "Fall 2021", status: "enrolled"}]
       },
     };
   }
@@ -86,139 +67,22 @@ class App extends Component{
       <Container>
         
         <Header />
-        
-        <Accordion defaultExpanded={true}>
-          <AccordionSummary expandIcon={<ExpandMore />}>
-            <Box py={2}>
-              <Typography variant="h6">Currently Enrolled</Typography>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item>
-                <ClassCard classObj = {{title : "Full Stack JS", number: "601.280", term: "Fall 2021", status: "enrolled"}}/>
 
-              </Grid>
-            </Grid>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion defaultExpanded={true}>
-          <AccordionSummary expandIcon={<ExpandMore />}>
-            <Box py={2}>
-              <Typography variant="h6">Want to Take</Typography>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item>
-                <Card style={styles.card}>
-                  <Box bgcolor={"warning.main"}>
-                    <CardContent style={styles.cardContent}>
-                      <Typography color="textSecondary" gutterBottom>
-                        601.421
-                      </Typography>
-                      <Typography variant="h5">
-                        Object-Oriented Software Engineering
-                      </Typography>
-                    </CardContent>
-                  </Box>
-                  <CardActions style={styles.cardActions}>
-                    <Button disabled>Spring 2021</Button>
-                    <IconButton style={styles.iconButton}>
-                      <ExpandMore style={styles.expandMore} />
-                      <Select style={styles.select} value={"interested"}>
-                        <MenuItem value="move" disabled>
-                          <Typography variant="body1">Move to...</Typography>
-                        </MenuItem>
-                        <MenuItem value="enrolled">
-                          <Typography variant="body1">
-                            Currently Enrolled
-                          </Typography>
-                        </MenuItem>
-                        <MenuItem value="interested">
-                          <Typography variant="body1">Want to Take</Typography>
-                        </MenuItem>
-                        <MenuItem value="taken">
-                          <Typography variant="body1">Already Took</Typography>
-                        </MenuItem>
-                        <MenuItem value="none">
-                          <Box fontStyle="italic">
-                            <Typography variant="body1">None</Typography>
-                          </Box>
-                        </MenuItem>
-                      </Select>
-                    </IconButton>
-                  </CardActions>
-                </Card>
-              </Grid>
-            </Grid>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion defaultExpanded={true}>
-          <AccordionSummary expandIcon={<ExpandMore />}>
-            <Box py={2}>
-              <Typography variant="h6">Already Took</Typography>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item>
-                <Card style={styles.card}>
-                  <Box bgcolor={"success.main"}>
-                    <CardContent style={styles.cardContent}>
-                      <Typography color="textSecondary" gutterBottom>
-                        601.226
-                      </Typography>
-                      <Typography variant="h5">Data Structures</Typography>
-                    </CardContent>
-                  </Box>
-                  <CardActions style={styles.cardActions}>
-                    <Button disabled>Fall 2019</Button>
-                    <IconButton style={styles.iconButton}>
-                      <ExpandMore style={styles.expandMore} />
-                      <Select style={styles.select} value={"taken"}>
-                        <MenuItem value="move" disabled>
-                          <Typography variant="body1">Move to...</Typography>
-                        </MenuItem>
-                        <MenuItem value="enrolled">
-                          <Typography variant="body1">
-                            Currently Enrolled
-                          </Typography>
-                        </MenuItem>
-                        <MenuItem value="interested">
-                          <Typography variant="body1">Want to Take</Typography>
-                        </MenuItem>
-                        <MenuItem value="taken">
-                          <Typography variant="body1">Already Took</Typography>
-                        </MenuItem>
-                        <MenuItem value="none">
-                          <Box fontStyle="italic">
-                            <Typography variant="body1">None</Typography>
-                          </Box>
-                        </MenuItem>
-                      </Select>
-                    </IconButton>
-                  </CardActions>
-                </Card>
-              </Grid>
-            </Grid>
-          </AccordionDetails>
-        </Accordion>
+        <CategoryCard 
+          status = "Currently Enrolled"
+          classes = {this.state.cardMap.enrolled} 
+        />
+
+        <CategoryCard 
+          status = "Want to Take"
+          classes = {this.state.cardMap.interested} 
+        />
+
+        <CategoryCard 
+          status = "Already Took"
+          classes = {this.state.cardMap.taken} 
+        />
+        
         <Fab style={styles.fab} color="primary">
           <Add />
         </Fab>

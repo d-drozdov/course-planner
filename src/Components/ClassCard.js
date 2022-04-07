@@ -15,6 +15,16 @@ import Typography from "@material-ui/core/Typography";
 function ClassCard(props) {
   const { classObj } = props;
   const { title, number, term, status } = classObj;
+  let color; 
+  if (status === "enrolled"){
+    color = "info.main";
+  } else if ( status === "interested"){
+    color = "warning.main";
+  } else if (status ===  "taken") {
+    color = "success.main";
+  }
+    
+
 
   const styles = {
     fab: {
@@ -57,7 +67,7 @@ function ClassCard(props) {
 
   return(
     <Card style={styles.card}>
-      <Box bgcolor={"info.main"}>
+      <Box bgcolor={color}>
         <CardContent style={styles.cardContent}>
           <Typography color="textSecondary" gutterBottom>
             {number}
@@ -69,7 +79,7 @@ function ClassCard(props) {
         <Button disabled>{term} </Button>
         <IconButton style={styles.iconButton}>
           <ExpandMore style={styles.expandMore} />
-          <Select style={styles.select} value={`${status}`}>
+          <Select style={styles.select} value={status}>
             <MenuItem value="move" disabled>
               <Typography variant="body1">Move to...</Typography>
             </MenuItem>
