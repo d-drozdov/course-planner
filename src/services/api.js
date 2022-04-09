@@ -61,5 +61,5 @@ async function search(query, page = 1, limit = 20) {
     return get(`/api/search?query=${query}&page=${page}&limit=${limit}`);
   }
 }
-
-export { setToken, get, getAll, create, remove, update, search };
+//TODO: Figure out setToken 
+export { get, getAll, create, remove, update, search };

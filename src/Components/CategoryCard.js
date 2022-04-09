@@ -9,7 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import ClassCard from "./ClassCard"
 
 function CategoryCard(props){
-  const { status, classes } = props;
+  const { status, classes, removeCourse, updateCourse} = props;
+
 
   return(
     <Accordion defaultExpanded={true}>
@@ -25,17 +26,22 @@ function CategoryCard(props){
             justifyContent="center"
             alignItems="center"
         >      
-            {classes.map((classObj) => {
+            {classes.map(classObj => {
               return (
-              <Grid item> 
-                <ClassCard classObj = {classObj}/> 
-              </Grid>);   
+                <Grid item> 
+                  <ClassCard 
+                    classObj = {classObj}
+                    removeCourse = {removeCourse}
+                    updateCourse = {updateCourse}
+                    /> 
+                </Grid>
+              );   
             })}
-
         </Grid>
         </AccordionDetails>
     </Accordion>
-  );
+  ); 
+  
 }
 
 export default CategoryCard;
