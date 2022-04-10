@@ -12,9 +12,9 @@ import Typography from "@material-ui/core/Typography";
 
 
 
-function ClassCard(props) {
-  const { classObj, removeCourse, updateCourse } = props;
-  const { title, number, term, status } = classObj;
+function CourseCard(props) {
+  const { courseObj, removeCourse, updateCourse } = props;
+  const { title, number, term, status } = courseObj;
   
   let color; 
   if (status === "enrolled"){
@@ -69,9 +69,9 @@ function ClassCard(props) {
 
   function changeVal(desiredStatus){
     if(desiredStatus === "none"){
-        removeCourse(classObj);
+        removeCourse(courseObj);
     } else {
-      updateCourse(classObj, desiredStatus);
+      updateCourse(courseObj, desiredStatus);
     }
   }
 
@@ -118,4 +118,4 @@ function ClassCard(props) {
 
 }
 
-export default ClassCard;
+export default CourseCard;

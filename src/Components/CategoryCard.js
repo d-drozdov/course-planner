@@ -6,10 +6,10 @@ import Box from "@material-ui/core/Box";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import ClassCard from "./ClassCard"
+import CourseCard from "./CourseCard"
 
 function CategoryCard(props){
-  const { status, classes, removeCourse, updateCourse} = props;
+  const { status, courses, removeCourse, updateCourse} = props;
 
 
   return(
@@ -26,11 +26,11 @@ function CategoryCard(props){
             justifyContent="center"
             alignItems="center"
         >      
-            {classes.map(classObj => {
+            {courses.map(courseObj => {
               return (
                 <Grid item> 
-                  <ClassCard 
-                    classObj = {classObj}
+                  <CourseCard 
+                    courseObj = {courseObj}
                     removeCourse = {removeCourse}
                     updateCourse = {updateCourse}
                     /> 
