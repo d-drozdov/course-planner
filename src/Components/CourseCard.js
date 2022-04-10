@@ -16,15 +16,13 @@ function CourseCard(props) {
   const { courseObj, removeCourse, updateCourse } = props;
   const { title, number, term, status } = courseObj;
   
-  let color; 
+  let color = "#808080"; //for none 
   if (status === "enrolled"){
     color = "info.main";
   } else if ( status === "interested"){
     color = "warning.main";
   } else if (status ===  "taken") {
     color = "success.main";
-  } else if (status === "none"){
-    color = "";//TODO:Add grey color for none status
   }
     
 

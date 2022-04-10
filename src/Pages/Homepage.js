@@ -1,9 +1,10 @@
 import React from "react";
 import Add from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
-import CategoryCard from "./CategoryCard";
+import CategoryCard from "../Components/CategoryCard";
+import { Link } from "react-router-dom";
 
-function DisplayHome(props){
+function Homepage(props){
   const {courses, removeCourse, updateCourse} = props;
 
   const styles = {
@@ -66,12 +67,13 @@ function DisplayHome(props){
         removeCourse = {removeCourse}
         updateCourse = {updateCourse}
       />
-
-      <Fab style={styles.fab} color="primary">
-        <Add />
-      </Fab>
+      <Link to = "/search">
+        <Fab style={styles.fab} color="primary">
+          <Add />
+        </Fab>
+      </Link>
     </>
   );
 }
 
-export default DisplayHome;
+export default Homepage;
