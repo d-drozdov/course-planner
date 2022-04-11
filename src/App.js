@@ -15,7 +15,7 @@ class App extends Component{
       courses: [],
       query: "",
       queryResponse : {},
-      currentPage: undefined,
+      currentPage: 1,
     };
   }
   
@@ -26,6 +26,7 @@ class App extends Component{
     response.forEach(courseObj => courses.push(courseObj));
     this.setState({ courses }); 
   }
+  
   //TODO:Figure out bug that causes the pagination to be controlled
   async updateCourse(courseObj, desiredStatus){
     const { courses } = this.state;

@@ -1,19 +1,11 @@
 import SearchBar from "material-ui-search-bar";
-import { Pagination } from "@material-ui/lab";
 import CourseCard from "../Components/CourseCard";
 import Grid from "@material-ui/core/Grid";
-
+import PageController from "../Components/PageController";
 
 function SearchPage(props){
   const{courses, query, updateQuery, searchForQuery, removeCourse, updateCourse, queryResponse, currentPage, setCurrPage} = props;
-
-  const styles ={
-    Pagination : {
-      display: "flex",
-      justifyContent: "center",
-    }
-  }
-
+  
   function compareCourse(courseObj){
     let course = courseObj;
     courses.forEach(c => {
@@ -26,12 +18,11 @@ function SearchPage(props){
     return course;
   }
 
-  const changePage = (event, value) => {
-    setCurrPage(value);
-    searchForQuery(value);
-  };
+  // const changePage = (event, value) => {
+  //   setCurrPage(value);
+  //   searchForQuery(value);
+  // };
 
-  //TODO: update pagination to fix errors
   return(
     <>
       <SearchBar 
@@ -39,11 +30,17 @@ function SearchPage(props){
         onChange={(newValue) => updateQuery(newValue, () => searchForQuery(1, true))} 
         onCancelSearch={() => updateQuery("", () => searchForQuery(1, true))} 
       />
-      <Pagination 
+      {/* <Pagination 
       count={(queryResponse.pagination && queryResponse.pagination.last)  ? queryResponse.pagination.last : 0} 
       style={styles.Pagination} 
       onChange={changePage}
       page={currentPage} 
+      /> */}
+      <PageController
+      queryResponse = {queryResponse}
+      currentPage = {currentPage}
+      setCurrPage = {setCurrPage}
+      searchForQuery = {searchForQuery}
       />
       
         <Grid

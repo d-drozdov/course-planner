@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import CourseCard from "./CourseCard"
 
+
 function CategoryCard(props){
   const { status, courses, removeCourse, updateCourse} = props;
 
@@ -26,9 +27,9 @@ function CategoryCard(props){
             justifyContent="center"
             alignItems="center"
         >      
-            {courses.map(courseObj => {
+            {courses.map((courseObj,key) => {
               return (
-                <Grid item> 
+                <Grid item key={key}> 
                   <CourseCard 
                     courseObj = {courseObj}
                     removeCourse = {removeCourse}
