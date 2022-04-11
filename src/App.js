@@ -5,7 +5,7 @@ import Header from "./Components/Header.js";
 import Homepage from "./Pages/Homepage.js";
 import { create, getAll, remove, search, update } from "./services/api"
 import AddPage from "./Pages/SearchPage.js";
-import NotFound from "./Pages/NotFound.js";
+import { Link } from "react-router-dom";
 
 //TODO: Add pagination
 class App extends Component{
@@ -14,7 +14,8 @@ class App extends Component{
     this.state = {
       courses: [],
       query: "",
-      queryResponse : {}
+      queryResponse : {},
+      currentPage: undefined,
     };
   }
   
@@ -22,11 +23,10 @@ class App extends Component{
   async componentDidMount(){
     const { courses } = this.state
     const response = await getAll();
-    console.log(response);
     response.forEach(courseObj => courses.push(courseObj));
     this.setState({ courses }); 
   }
-  //TODO:Figure out bug that causes the 
+  //TODO:Figure out bug that causes the pagination to be controlled
   async updateCourse(courseObj, desiredStatus){
     const { courses } = this.state;
     if(courseObj._id){
@@ -51,13 +51,18 @@ class App extends Component{
     }
   }
     
-  async updateQuery(query){
-    this.setState({ query }, () => this.searchForQuery());
+  async updateQuery(query, callback){
+    this.setState({ query }, callback);
   };
 
-  async searchForQuery(){
-    const response = await search(this.state.query);
+  async searchForQuery(page = 1, changeCurrPage = false){
+    const response = await search(this.state.query, page);
     this.setState({queryResponse: response});
+    if(changeCurrPage) this.setCurrPage(1);
+  }
+
+  setCurrPage(desiredValue){
+    this.setState({ currentPage : desiredValue });
   }
 
 
@@ -82,14 +87,18 @@ class App extends Component{
             courses = {this.state.courses}
             query = {this.state.query} 
             updateQuery = {this.updateQuery.bind(this)}
+            searchForQuery = {this.searchForQuery.bind(this)}
             removeCourse = {this.removeCourse.bind(this)}
             updateCourse = {this.updateCourse.bind(this)}
             queryResponse = {this.state.queryResponse}
+            currentPage = {this.state.currentPage}
+            setCurrPage = {this.setCurrPage.bind(this)}
             />
           </Route>
 
           <Route>
-            <NotFound />
+            <div>404 Not Found</div>
+            <Link to= "/">Go to Homepage!</Link>
           </Route>
 
         </Switch>
