@@ -4,10 +4,10 @@
 This repository contains a homework submission.
 
 ```text
-JHED=
-GITHUB_USERNAME=
-GITHUB_REPO=
-NETLIFY_SITE=
+JHED= ddrozdo1
+GITHUB_USERNAME= d-drozdov
+GITHUB_REPO= https://github.com/cs280spring-classroom/course-planner-d-drozdov
+NETLIFY_SITE= https://course-planner-ddrozdo1.netlify.app/
 ```
 
 Please refer to the description of Homework-4, Full-Stack JavaScript (Spring 2022) for details.
