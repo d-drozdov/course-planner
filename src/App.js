@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Header from "./Components/Header.js";
 import Homepage from "./Pages/Homepage.js";
 import {create, getAll, remove, search, update } from "./services/api"
-import AddPage from "./Pages/SearchPage.js";
+import SearchPage from "./Pages/SearchPage.js";
 import { Link } from "react-router-dom";
 
 //TODO: Add pagination
@@ -27,7 +27,6 @@ class App extends Component{
     this.setState({ courses }); 
   }
   
-  //TODO:Figure out bug that causes the pagination to be controlled
   async updateCourse(courseObj, desiredStatus){
     const { courses } = this.state;
     if(courseObj._id){
@@ -84,7 +83,7 @@ class App extends Component{
           </Route>
 
           <Route path="/search">
-            <AddPage 
+            <SearchPage 
             courses = {this.state.courses}
             query = {this.state.query} 
             updateQuery = {this.updateQuery.bind(this)}

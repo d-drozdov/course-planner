@@ -65,7 +65,7 @@ function CourseCard(props) {
     },
   };
 
-  function changeVal(desiredStatus){
+  function changeCourseStatus(desiredStatus){
     if(desiredStatus === "none"){
         removeCourse(courseObj);
     } else {
@@ -92,18 +92,18 @@ function CourseCard(props) {
             <MenuItem value="move" disabled>
               <Typography variant="body1">Move to...</Typography>
             </MenuItem>
-            <MenuItem value="enrolled" onClick={() => changeVal("enrolled")} >
+            <MenuItem value="enrolled" onClick={() => changeCourseStatus("enrolled")} >
               <Typography variant="body1">
                 Currently Enrolled
               </Typography>
             </MenuItem>
-            <MenuItem value="interested" onClick={() => changeVal("interested")}>
+            <MenuItem value="interested" onClick={() => changeCourseStatus("interested")}>
               <Typography variant="body1">Want to Take</Typography>
             </MenuItem>
-            <MenuItem value="taken" onClick={() => changeVal("taken")}>
+            <MenuItem value="taken" onClick={() => changeCourseStatus("taken")}>
               <Typography variant="body1">Already Took</Typography>
             </MenuItem>
-            <MenuItem value="none" onClick={() => changeVal("none")}>
+            <MenuItem value="none" onClick={() => changeCourseStatus("none")}>
               <Box fontStyle="italic">
                 <Typography variant="body1">None</Typography>
               </Box>
