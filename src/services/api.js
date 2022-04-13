@@ -7,10 +7,6 @@ const axiosInstance = axios.create({
   },
 });
 
-async function setToken(){
-  axiosInstance.defaults.headers.common["Authorization"] = "ddrozdo1";
-}
-
 async function get(url) {
   try {
     const response = await axiosInstance.get(url);
@@ -65,5 +61,6 @@ async function search(query, page = 1, limit = 20) {
     return get(`/api/search?query=${query}&page=${page}&limit=${limit}`);
   }
 }
-//TODO: Figure out setToken 
-export {setToken, get, getAll, create, remove, update, search };
+
+
+export { get, getAll, create, remove, update, search };

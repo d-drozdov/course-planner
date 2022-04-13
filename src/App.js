@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router";
 import Container from "@material-ui/core/Container";
 import Header from "./Components/Header.js";
 import Homepage from "./Pages/Homepage.js";
-import {setToken, create, getAll, remove, search, update } from "./services/api"
+import {create, getAll, remove, search, update } from "./services/api"
 import AddPage from "./Pages/SearchPage.js";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 class App extends Component{
   constructor(props){
     super(props);
-    setToken()
     this.state = {
       courses: [],
       query: "",
