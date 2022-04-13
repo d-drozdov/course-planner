@@ -1,5 +1,6 @@
 import React from "react";
 import { Pagination } from "@material-ui/lab";
+import PropTypes from "prop-types";
 
 function PageController(props){
   const {queryResponse, currentPage, setCurrPage, searchForQuery } = props;
@@ -28,3 +29,10 @@ function PageController(props){
 }
 
 export default PageController;
+
+PageController.propTypes = { 
+  searchForQuery: PropTypes.func.isRequired, 
+  queryResponse: PropTypes.object.isRequired, 
+  currentPage: PropTypes.number.isRequired, 
+  setCurrPage: PropTypes.func.isRequired
+}

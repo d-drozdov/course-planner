@@ -3,6 +3,7 @@ import Add from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import CategoryCard from "../Components/CategoryCard";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function Homepage(props){
   const {courses, removeCourse, updateCourse} = props;
@@ -77,3 +78,9 @@ function Homepage(props){
 }
 
 export default Homepage;
+
+Homepage.propTypes = { 
+  courses: PropTypes.array.isRequired, 
+  removeCourse: PropTypes.func.isRequired, 
+  updateCourse: PropTypes.func.isRequired
+}

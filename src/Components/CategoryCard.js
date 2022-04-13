@@ -7,6 +7,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import CourseCard from "./CourseCard"
+import PropTypes from "prop-types";
 
 
 function CategoryCard(props){
@@ -46,3 +47,10 @@ function CategoryCard(props){
 }
 
 export default CategoryCard;
+
+CategoryCard.propTypes = {
+  status: PropTypes.string.isRequired, 
+  courses: PropTypes.array.isRequired, 
+  removeCourse: PropTypes.func.isRequired, 
+  updateCourse: PropTypes.func.isRequired
+}

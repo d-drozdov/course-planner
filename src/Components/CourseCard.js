@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
-
+import PropTypes from "prop-types";
 
 
 function CourseCard(props) {
@@ -117,3 +117,9 @@ function CourseCard(props) {
 }
 
 export default CourseCard;
+
+CourseCard.propTypes = {
+  courseObj: PropTypes.object.isRequired, 
+  removeCourse: PropTypes.func.isRequired, 
+  updateCourse: PropTypes.func.isRequired
+}
