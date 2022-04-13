@@ -6,7 +6,7 @@ import PageController from "../Components/PageController";
 function SearchPage(props){
   const{courses, query, updateQuery, searchForQuery, removeCourse, updateCourse, queryResponse, currentPage, setCurrPage} = props;
   
-  function compareCourse(courseObj){
+  function compareAndUpdateCourseObj(courseObj){
     let course = courseObj;
     courses.forEach(c => {
       if(c.term === courseObj.term &&
@@ -18,10 +18,6 @@ function SearchPage(props){
     return course;
   }
 
-  // const changePage = (event, value) => {
-  //   setCurrPage(value);
-  //   searchForQuery(value);
-  // };
 
   return(
     <>
@@ -30,12 +26,6 @@ function SearchPage(props){
         onChange={(newValue) => updateQuery(newValue, () => searchForQuery(1, true))} 
         onCancelSearch={() => updateQuery("", () => searchForQuery(1, true))} 
       />
-      {/* <Pagination 
-      count={(queryResponse.pagination && queryResponse.pagination.last)  ? queryResponse.pagination.last : 0} 
-      style={styles.Pagination} 
-      onChange={changePage}
-      page={currentPage} 
-      /> */}
       <PageController
       queryResponse = {queryResponse}
       currentPage = {currentPage}
@@ -50,7 +40,7 @@ function SearchPage(props){
           alignItems="center"
         >       
             {(queryResponse.data || []).map(courseObj => {
-              courseObj = compareCourse(courseObj);
+              courseObj = compareAndUpdateCourseObj(courseObj);
               return (
                 <Grid item> 
                   <CourseCard 

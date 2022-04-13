@@ -3,9 +3,13 @@ import axios from "axios";
 const axiosInstance = axios.create({
   baseURL: "https://courses-api-hw4.herokuapp.com",
   headers: {
-    Authorization: "ddrozdo1@jh.edu"
+    Authorization:"ddrozdo1"
   },
 });
+
+async function setToken(){
+  axiosInstance.defaults.headers.common["Authorization"] = "ddrozdo1";
+}
 
 async function get(url) {
   try {
@@ -62,4 +66,4 @@ async function search(query, page = 1, limit = 20) {
   }
 }
 //TODO: Figure out setToken 
-export { get, getAll, create, remove, update, search };
+export {setToken, get, getAll, create, remove, update, search };
